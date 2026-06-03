@@ -6,7 +6,7 @@
 /*   By: stephen <stephen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 13:20:34 by stephen           #+#    #+#             */
-/*   Updated: 2026/06/03 18:32:07 by stephen          ###   ########.fr       */
+/*   Updated: 2026/06/03 18:45:45 by stephen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 int main(){
 	//check how we recieve the request, need to use recv() and play with byte or something
 	// std::string rawRequest =
-	// 	"GET /hello HTTP/1.1\r\n"
+	// 	"GET /hello.html HTTP/1.1\r\n"
 	// 	"Host: localhost:8080\r\n"
 	// 	"\r\n";
 	// std::string rawRequest =
@@ -35,12 +35,15 @@ int main(){
 	// 	"POST /empty.txt HTTP/1.1\r\n"
 	// 	"Content-Length: 0\r\n"
 	// 	"\r\n";
-	std::string rawRequest =
-		"DELETE /upload.txt HTTP/1.1\r\n"
-		"\r\n";
 	// std::string rawRequest =
-	// 	"PUT /file.txt HTTP/1.1\r\n"
+	// 	"DELETE /upload.txt HTTP/1.1\r\n"
 	// 	"\r\n";
+	std::string rawRequest =
+		"GET / HTTP/1.1\r\n"
+		"Host: localhost\r\n"
+		"User-Agent: Mozilla/5.0\r\n"
+		"Accept: */*\r\n"
+		"\r\n";
 
 	HttpRequest request;
 	HttpResponse response;

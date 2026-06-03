@@ -6,7 +6,7 @@
 /*   By: stephen <stephen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/31 14:08:18 by stephen           #+#    #+#             */
-/*   Updated: 2026/06/03 16:36:32 by stephen          ###   ########.fr       */
+/*   Updated: 2026/06/03 19:13:28 by stephen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ HttpResponse handleGet(const HttpRequest& request)	//new
 		return errorResponse(404);
 	response.statusCode = 200;
 	response.headers["Content-Type"] = "text/html";
-
 	char buffer[1024];
 	ssize_t bytes;
 
