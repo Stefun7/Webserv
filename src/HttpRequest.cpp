@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HttpRequest.cpp                                    :+:      :+:    :+:   */
+/*   HTTPRequest.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stephen <stephen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:39:09 by stephen           #+#    #+#             */
-/*   Updated: 2026/06/03 19:00:48 by stephen          ###   ########.fr       */
+/*   Updated: 2026/06/05 16:17:56 by mariameviss      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HttpRequest.hpp"
+#include "../includes/HttpRequest.hpp"
 
 bool HttpRequest::parse(const std::string& rawRequest){
 	//first line
@@ -110,3 +110,14 @@ std::string gnl_req(const std::string &rawRequest, size_t &eol){	//new
 // 	//deeper check needed like valid method (only 3 here),...
 // 	return true;
 // }
+
+const std::string& HttpRequest::getMethod()const{ return method; }
+const std::string& HttpRequest::getUri()const{ return uri; }
+const std::string& HttpRequest::getVersion()const{ return version; } 
+const std::string& HttpRequest::getBody()const{ return body; }
+std::string HttpRequest::getHeader(const std::string &key)const{
+    std::map<std::string, std::string>::const_iterator it = headers.find(key);
+    if (it != headers.end())
+        return it->second;
+    return "";
+}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HttpRequest.hpp                                    :+:      :+:    :+:   */
+/*   HTTPRequest.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stephen <stephen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 13:01:06 by stephen           #+#    #+#             */
-/*   Updated: 2026/06/01 01:50:49 by stephen          ###   ########.fr       */
+/*   Updated: 2026/06/05 15:10:57 by mariameviss      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,20 @@
 
 //add some getters to make things pretty
 class HttpRequest{
-private:
-	bool check_empty();
-public:
+	private:
 	std::string method;
 	std::string uri;
 	std::string version;
 	std::map<std::string, std::string> headers;
 	std::string body;
-
+	bool check_empty();
+public:
 	bool parse(const std::string& rawRequest);
+	const std::string& getMethod() const;
+    const std::string& getUri() const;
+    const std::string& getVersion() const;
+    const std::string& getBody() const;
+    std::string getHeader(const std::string& key) const;
 };
 
 std::string gnl_req(const std::string &rawRequest, size_t &eol);
@@ -39,3 +43,4 @@ std::string gnl_req(const std::string &rawRequest, size_t &eol);
 //[HEADERS]
 //
 //[BODY]
+

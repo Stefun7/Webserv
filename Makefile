@@ -1,31 +1,35 @@
-NAME = webserv
+NAME    = webserv
+CXX     = c++
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-CXX = c++
+SRCS =  src/main.cpp \
+        src/location.cpp \
+        src/ServerConfig.cpp \
+        src/ConfigParser.cpp \
+        src/ServerManager.cpp \
+        src/Client.cpp \
+		src/HttpRequest.cpp \
+		src/HttpResponse.cpp \
+		src/Router.cpp \
+		src/cgi.cpp
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-
-SRC = HttpRequest.cpp HttpResponse.cpp main.cpp Router.cpp
-
-OBJS = $(SRC:.cpp=.o)
-
-INC = HttpRequest.hpp HttpResponse.hpp Router.hpp
-
-RM = rm -rf
-
-%.o: %.cpp $(INC)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+OBJS =  $(SRCS:src/%.cpp=obj/%.o)
 
 all : $(NAME)
 
-$(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+$(NAME) : $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
-clean :
-	$(RM) $(OBJS)
+obj/%.o: src/%.cpp
+	@mkdir -p obj
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-fclean : clean
-	$(RM) $(NAME)
+clean:
+	rm -rf obj
 
-re : fclean all
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
 
 .PHONY : all clean fclean re

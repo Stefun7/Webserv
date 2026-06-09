@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   HttpResponse.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stephen <stephen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mariamevissargova <mariamevissargova@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 15:01:22 by stephen           #+#    #+#             */
-/*   Updated: 2026/06/03 19:13:36 by stephen          ###   ########.fr       */
+/*   Updated: 2026/06/05 16:18:17 by mariameviss      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HttpResponse.hpp"
+#include "../includes/HttpResponse.hpp"
 
 std::string HttpResponse::buildResponse(){
 	std::stringstream res;
